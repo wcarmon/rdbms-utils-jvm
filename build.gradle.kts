@@ -15,6 +15,7 @@ repositories {
 plugins {
     java
     id("com.diffplug.spotless") version "6.23.3"
+    id("io.freefair.lombok") version "8.4"
 
     `java-library`
     `maven-publish`
@@ -25,12 +26,20 @@ group = mvnGroupId
 version = mvnVersion
 
 configure<JavaPluginExtension> {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    // -- records
+    sourceCompatibility = JavaVersion.VERSION_16
+    targetCompatibility = JavaVersion.VERSION_16
 }
 
 dependencies {
+    annotationProcessor("org.projectlombok:lombok:1.18.30")
+    compileOnly("org.projectlombok:lombok:1.18.30")
+
+    testAnnotationProcessor("org.projectlombok:lombok:1.18.30")
+    testCompileOnly("org.projectlombok:lombok:1.18.30")
+
     implementation("org.jetbrains:annotations:24.1.0")
+    implementation("org.projectlombok:lombok:1.18.30")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.1")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.10.1")
