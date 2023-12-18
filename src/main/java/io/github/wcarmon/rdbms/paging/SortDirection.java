@@ -7,6 +7,12 @@ public enum SortDirection {
     ASC,
     DESC;
 
+    /**
+     * lenient parse from a string
+     *
+     * @param raw a string like "asc"
+     * @return SortDirection or throw
+     */
     public static SortDirection fromString(String raw) {
         if (raw == null || raw.isBlank()) {
             throw new IllegalArgumentException("raw is required");

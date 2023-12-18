@@ -5,12 +5,10 @@ import static java.util.Objects.requireNonNull;
 /**
  * A column used for sorting query results
  *
- * @param name
- * @param direction
+ * @param name snake_case
+ * @param direction see docs
  */
-public record SortColumn(
-        /* snake_case */
-        String name, SortDirection direction) {
+public record SortColumn(String name, SortDirection direction) {
 
     public SortColumn {
         if (name == null || name.isBlank()) {
@@ -20,6 +18,12 @@ public record SortColumn(
         requireNonNull(direction, "direction is required and null.");
     }
 
+    /**
+     * Build a new SortColumn with passed name and direction.
+     *
+     * @param name of the column in snake_case
+     * @return an ascending sort column with passed name
+     */
     public static SortColumn of(String name) {
         return new SortColumn(name, SortDirection.ASC);
     }

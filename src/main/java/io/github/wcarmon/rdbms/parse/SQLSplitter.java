@@ -6,12 +6,13 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import org.jetbrains.annotations.Nullable;
 
+/** Splits a collection (file) of sql statements into single executable statements */
 public final class SQLSplitter {
 
     private static final Pattern SQL_COMMENT_PATTERN =
             Pattern.compile("--[^\\n]*|/\\*.*?\\*/", Pattern.DOTALL);
 
-    public static String stripTrailingSpaces(@Nullable String raw) {
+    private static String stripTrailingSpaces(@Nullable String raw) {
         if (raw == null || raw.isBlank()) {
             return "";
         }
@@ -27,10 +28,10 @@ public final class SQLSplitter {
     /**
      * Removes /* ... * / and -- ... style comments
      *
-     * @param raw
-     * @return
+     * @param raw one or more sql statements
+     * @return same as input, but with comments removed
      */
-    public static String withoutComments(@Nullable String raw) {
+    private static String withoutComments(@Nullable String raw) {
         if (raw == null || raw.isBlank()) {
             return "";
         }
@@ -39,8 +40,10 @@ public final class SQLSplitter {
     }
 
     /**
-     * @param raw
-     * @return
+     * Split
+     *
+     * @param raw one or more sql statements, eg. read from a file
+     * @return a collection of executable sql statements, possibly empty, never null
      */
     public List<String> splitSQLStatements(@Nullable String raw) {
         if (raw == null || raw.isBlank()) {
