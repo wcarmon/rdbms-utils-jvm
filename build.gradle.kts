@@ -1,5 +1,4 @@
 import com.diffplug.gradle.spotless.SpotlessExtension
-import kotlin.math.sign
 
 val mvnGroupId = "io.github.wcarmon"
 val mvnArtifactId = "rdbms-utils-jvm" // see settings.gradle.kts
@@ -15,7 +14,6 @@ repositories {
 plugins {
     java
     id("com.diffplug.spotless") version "6.23.3"
-    id("io.freefair.lombok") version "8.4"
 
     `java-library`
     `maven-publish`
@@ -26,9 +24,8 @@ group = mvnGroupId
 version = mvnVersion
 
 configure<JavaPluginExtension> {
-    // TODO: is 16 good enough?
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+    sourceCompatibility = JavaVersion.VERSION_16
+    targetCompatibility = JavaVersion.VERSION_16
 }
 
 dependencies {
@@ -136,7 +133,8 @@ tasks.javadoc {
 
 configure<SpotlessExtension> {
     java {
-        googleJavaFormat("1.18.1").aosp().reflowLongStrings()
+        // TODO: fix this
+//        googleJavaFormat("1.18.1").aosp().reflowLongStrings()
         importOrder()
         removeUnusedImports()
 

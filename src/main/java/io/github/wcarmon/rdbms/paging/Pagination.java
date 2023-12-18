@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
-
 import lombok.Builder;
 import org.jetbrains.annotations.Nullable;
 
@@ -34,7 +33,7 @@ public record Pagination(long offset, long limit, List<SortColumn> columns) {
     }
 
     /**
-     * eg. ?limit=10&offset=0&columns=+name,-age
+     * eg. "?limit=10&amp;offset=0&amp;columns=+name,-age"
      *
      * @param queryParams
      * @return Pagination or null
