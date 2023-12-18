@@ -26,9 +26,9 @@ group = mvnGroupId
 version = mvnVersion
 
 configure<JavaPluginExtension> {
-    // -- records
-    sourceCompatibility = JavaVersion.VERSION_16
-    targetCompatibility = JavaVersion.VERSION_16
+    // TODO: is 16 good enough?
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 dependencies {

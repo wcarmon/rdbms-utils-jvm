@@ -8,14 +8,15 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
+
 import lombok.Builder;
 import org.jetbrains.annotations.Nullable;
 
 /**
  * Represents a "page" of results from a query
  *
- * @param offset from zero
- * @param limit page size
+ * @param offset  from zero
+ * @param limit   page size
  * @param columns for sorting rows
  */
 public record Pagination(long offset, long limit, List<SortColumn> columns) {

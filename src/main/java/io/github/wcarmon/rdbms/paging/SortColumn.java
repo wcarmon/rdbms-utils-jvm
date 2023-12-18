@@ -5,7 +5,7 @@ import static java.util.Objects.requireNonNull;
 /**
  * A column used for sorting query results
  *
- * @param name snake_case
+ * @param name      snake_case
  * @param direction see docs
  */
 public record SortColumn(String name, SortDirection direction) {
