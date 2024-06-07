@@ -5,9 +5,13 @@ import static java.util.Objects.requireNonNull;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-
 import lombok.Builder;
 
+/**
+ * @param jdbcUrl  https://docs.oracle.com/javase/tutorial/jdbc/basics/connecting.html#db_connection_url
+ * @param password credential
+ * @param user     credential
+ */
 @Builder
 public record PostgresConfig(
         String jdbcUrl,
@@ -18,6 +22,11 @@ public record PostgresConfig(
     public static final String KEY_PASSWORD = "pg.password";
     public static final String KEY_USER = "pg.user";
 
+    /**
+     * @param jdbcUrl  https://docs.oracle.com/javase/tutorial/jdbc/basics/connecting.html#db_connection_url
+     * @param password credential
+     * @param user     credential
+     */
     public PostgresConfig {
         jdbcUrl = (jdbcUrl == null || jdbcUrl.isBlank() ? "" : jdbcUrl).strip();
         user = (user == null || user.isBlank() ? "" : user).strip();

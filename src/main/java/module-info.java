@@ -1,3 +1,4 @@
+/** Module for RDBMS related utilities. */
 module io.github.wcarmon.rdbms {
     exports io.github.wcarmon.rdbms;
     exports io.github.wcarmon.rdbms.config;

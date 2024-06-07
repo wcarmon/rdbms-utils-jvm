@@ -23,6 +23,7 @@ public record Pagination(long offset, long limit, List<SortColumn> columns) {
     public static long DEFAULT_LIMIT = 100L;
     public static long DEFAULT_OFFSET = 0;
 
+    /** Create new instance */
     @Builder
     public Pagination {
         checkArgument(limit > 0, "limit must be positive");
@@ -35,7 +36,7 @@ public record Pagination(long offset, long limit, List<SortColumn> columns) {
     /**
      * eg. "?limit=10&amp;offset=0&amp;columns=+name,-age"
      *
-     * @param queryParams
+     * @param queryParams TODO
      * @return Pagination or null
      */
     @Nullable
@@ -126,6 +127,11 @@ public record Pagination(long offset, long limit, List<SortColumn> columns) {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Simple getter
+     *
+     * @return true only when this represents the first page of results
+     */
     public Pagination firstPage() {
         return new Pagination(0, limit, List.copyOf(columns));
     }

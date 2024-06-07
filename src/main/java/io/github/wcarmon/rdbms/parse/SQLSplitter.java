@@ -12,6 +12,10 @@ public final class SQLSplitter {
     private static final Pattern SQL_COMMENT_PATTERN =
             Pattern.compile("--[^\\n]*|/\\*.*?\\*/", Pattern.DOTALL);
 
+    /** Create new instance */
+    public SQLSplitter() {
+    }
+
     private static String stripTrailingSpaces(@Nullable String raw) {
         if (raw == null || raw.isBlank()) {
             return "";

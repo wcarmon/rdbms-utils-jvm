@@ -10,6 +10,7 @@ import static java.util.Objects.requireNonNull;
  */
 public record SortColumn(String name, SortDirection direction) {
 
+    /** Create new instance */
     public SortColumn {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("name is required");

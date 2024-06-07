@@ -4,7 +4,10 @@ import java.util.Locale;
 
 /** Ascending or descending. */
 public enum SortDirection {
+    /** Ascending. */
     ASC,
+
+    /** Descending. */
     DESC;
 
     /**
@@ -28,10 +31,20 @@ public enum SortDirection {
         };
     }
 
+    /**
+     * Simple getter
+     *
+     * @return true if ascending, false if descending.
+     */
     public boolean isAscending() {
         return ASC.equals(this);
     }
 
+    /**
+     * Simple getter
+     *
+     * @return true if descending, false if ascending.
+     */
     public boolean isDescending() {
         return DESC.equals(this);
     }

@@ -2,10 +2,10 @@ package io.github.wcarmon.rdbms.util;
 
 import static java.util.Objects.requireNonNull;
 
-import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.sql.DataSource;
 
 /**
  * Utility class for database connection.
