@@ -2,7 +2,7 @@ import com.diffplug.gradle.spotless.SpotlessExtension
 
 val mvnGroupId = "io.github.wcarmon"
 val mvnArtifactId = "rdbms-utils-jvm" // see settings.gradle.kts
-val mvnVersion = "1.0.0"
+val mvnVersion = "1.0.1"
 
 val ossrhPassword: String = providers.gradleProperty("ossrhPassword").getOrElse("")
 val ossrhUsername: String = providers.gradleProperty("ossrhUsername").getOrElse("")
@@ -134,7 +134,7 @@ tasks.javadoc {
 configure<SpotlessExtension> {
     java {
         // TODO: fix this
-//        googleJavaFormat("1.18.1").aosp().reflowLongStrings()
+        //googleJavaFormat("1.18.1").aosp().reflowLongStrings().skipJavadocFormatting()
         importOrder()
         removeUnusedImports()
 
