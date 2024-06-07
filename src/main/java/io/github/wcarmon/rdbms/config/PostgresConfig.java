@@ -8,6 +8,8 @@ import java.util.Properties;
 import lombok.Builder;
 
 /**
+ * Enough config required to connect to a postgres database
+ *
  * @param jdbcUrl  https://docs.oracle.com/javase/tutorial/jdbc/basics/connecting.html#db_connection_url
  * @param password credential
  * @param user     credential
@@ -22,11 +24,7 @@ public record PostgresConfig(
     public static final String KEY_PASSWORD = "pg.password";
     public static final String KEY_USER = "pg.user";
 
-    /**
-     * @param jdbcUrl  https://docs.oracle.com/javase/tutorial/jdbc/basics/connecting.html#db_connection_url
-     * @param password credential
-     * @param user     credential
-     */
+    /** Defaults and Validation */
     public PostgresConfig {
         jdbcUrl = (jdbcUrl == null || jdbcUrl.isBlank() ? "" : jdbcUrl).strip();
         user = (user == null || user.isBlank() ? "" : user).strip();
@@ -45,7 +43,7 @@ public record PostgresConfig(
     /**
      * throws when input invalid
      *
-     * @param props
+     * @param props key-value pairs, see constants above
      * @return new PostgresConfig
      */
     public static PostgresConfig fromProperties(Map<String, Object> props) {
