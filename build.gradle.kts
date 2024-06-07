@@ -2,7 +2,7 @@ import com.diffplug.gradle.spotless.SpotlessExtension
 
 val mvnGroupId = "io.github.wcarmon"
 val mvnArtifactId = "rdbms-utils-jvm" // see settings.gradle.kts
-val mvnVersion = "1.0.1"
+val mvnVersion = "1.0.2"
 
 val ossrhPassword: String = providers.gradleProperty("ossrhPassword").getOrElse("")
 val ossrhUsername: String = providers.gradleProperty("ossrhUsername").getOrElse("")
@@ -37,6 +37,10 @@ dependencies {
 
     implementation("org.jetbrains:annotations:24.1.0")
     implementation("org.projectlombok:lombok:1.18.30")
+
+    // -- For filling placeholders in PostgresConfig.jdbcUrl
+    // TODO: make optional
+    implementation("org.apache.commons:commons-text:1.12.0")
 
     testImplementation("com.google.guava:guava:32.1.3-jre")
     testImplementation("org.apache.commons:commons-lang3:3.14.0")

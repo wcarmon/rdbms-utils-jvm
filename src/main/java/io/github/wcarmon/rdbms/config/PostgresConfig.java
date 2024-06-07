@@ -5,7 +5,9 @@ import static java.util.Objects.requireNonNull;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+
 import lombok.Builder;
+import org.apache.commons.text.StringSubstitutor;
 
 /**
  * Enough config required to connect to a postgres database
@@ -37,6 +39,17 @@ public record PostgresConfig(
         }
         if (user.isBlank()) {
             throw new IllegalArgumentException("user is required");
+        }
+
+        if (!jdbcUrl.startsWith("jdbc:")) {
+            throw new IllegalArgumentException("jdbcUrl must start with 'jdbc:'");
+        }
+
+        if (jdbcUrl.contains("${")) {
+            final String before = jdbcUrl;
+
+            final StringSubstitutor sub = new StringSubstitutor(System.getenv());
+            jdbcUrl = sub.replace(before);
         }
     }
 

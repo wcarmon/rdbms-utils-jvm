@@ -7,4 +7,5 @@ module io.github.wcarmon.rdbms {
     requires static lombok;
     requires org.jetbrains.annotations;
     requires java.sql;
+    requires org.apache.commons.text;
 }
